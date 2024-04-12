@@ -28,7 +28,7 @@ export const App = () => {
   };
 
   return (
-    <div>
+    <>
       <h1>Phonebook</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -65,6 +65,6 @@ export const App = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
