@@ -13,6 +13,15 @@ export const App = () => {
   const [filter, setFilter] = useState('');
 
   const addContact = newContact => {
+    const isExistingContact = contacts.some(
+      contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
+    );
+
+    if (isExistingContact) {
+      alert(`${newContact.name} is already in contacts.`);
+      return;
+    }
+
     setContacts([...contacts, newContact]);
   };
 
@@ -24,7 +33,7 @@ export const App = () => {
     <div>
       <h1>Phonebook</h1>
       <ContactForm addContact={addContact} />
-      <h2></h2>
+      <h2>Contacts list:</h2>
       <Filter filter={filter} setFilter={setFilter} />
       <ContactList contacts={filteredContacts} />
     </div>
