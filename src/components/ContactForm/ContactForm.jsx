@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
+import { ButtonForm, FormLabel, InputLabel } from './ContactForm.css';
 
 export const ContactForm = ({ addContact }) => {
   const [name, setName] = useState('');
@@ -28,9 +29,9 @@ export const ContactForm = ({ addContact }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
+      <FormLabel>
         Name:
-        <input
+        <InputLabel
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -39,10 +40,10 @@ export const ContactForm = ({ addContact }) => {
           onChange={handleNameChange}
           required
         />
-      </label>
-      <label>
+      </FormLabel>
+      <FormLabel>
         Phone number:
-        <input
+        <InputLabel
           type="tel"
           name="tel"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -51,8 +52,10 @@ export const ContactForm = ({ addContact }) => {
           onChange={handleTelChange}
           required
         />
-      </label>
-      <button type="submit">Add contact</button>
+      </FormLabel>
+      <ButtonForm button type="submit">
+        Add contact
+      </ButtonForm>
     </form>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { BtnRemove } from './ContactList.css';
 
 export const ContactList = ({ contacts, removeContact }) => {
   return (
@@ -6,7 +7,9 @@ export const ContactList = ({ contacts, removeContact }) => {
       {contacts.map(contact => (
         <li key={contact.id}>
           {contact.name} - {contact.tel}
-          <button onClick={() => removeContact(contact.id)}>Remove</button>
+          <BtnRemove onClick={() => removeContact(contact.id)}>
+            Remove
+          </BtnRemove>
         </li>
       ))}
     </ul>
