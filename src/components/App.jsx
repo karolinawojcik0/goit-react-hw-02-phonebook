@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState([
+    { id: 'id-1', name: 'Rosie Simpson', tel: '459-12-56' },
+    { id: 'id-2', name: 'Hermione Kline', tel: '443-89-12' },
+    { id: 'id-3', name: 'Eden Clements', tel: '645-17-79' },
+    { id: 'id-4', name: 'Annie Copeland', tel: '227-91-26' },
+  ]);
   const [name, setName] = useState('');
   const [tel, setTel] = useState('');
+  const [filter, setFilter] = useState('');
 
   const handleNameChange = e => {
     setName(e.target.value);
@@ -12,6 +18,10 @@ export const App = () => {
 
   const handleTelChange = e => {
     setTel(e.target.value);
+  };
+
+  const handleFilterChange = e => {
+    setFilter(e.target.value);
   };
 
   const handleSubmit = e => {
@@ -26,6 +36,10 @@ export const App = () => {
     setName('');
     setTel('');
   };
+
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
     <>
@@ -57,9 +71,15 @@ export const App = () => {
         </label>
         <button type="submit">Add contact</button>
       </form>
+      <input
+        type="text"
+        placeholder="Search by name"
+        value={filter}
+        onChange={handleFilterChange}
+      />
       <h2>Contacts list:</h2>
       <ul>
-        {contacts.map(contact => (
+        {filteredContacts.map(contact => (
           <li key={contact.id}>
             {contact.name} - {contact.tel}
           </li>
