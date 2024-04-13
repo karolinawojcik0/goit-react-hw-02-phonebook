@@ -1,11 +1,13 @@
-import { Contact } from 'components/Contacts/Contact';
 import React from 'react';
 
-export const ContactList = ({ contacts }) => {
+export const ContactList = ({ contacts, removeContact }) => {
   return (
     <ul>
       {contacts.map(contact => (
-        <Contact key={contact.id} contact={contact} />
+        <li key={contact.id}>
+          {contact.name} - {contact.tel}
+          <button onClick={() => removeContact(contact.id)}>Remove</button>
+        </li>
       ))}
     </ul>
   );
