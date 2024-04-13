@@ -1,5 +1,5 @@
+import { Contact } from 'components/Contacts/Contact';
 import React from 'react';
-import Contact from './Contact';
 
 export const ContactList = ({ contacts }) => {
   return (

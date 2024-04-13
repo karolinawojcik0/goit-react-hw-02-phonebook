@@ -1,9 +1,16 @@
 import React from 'react';
 
-export const Contact = ({ contact }) => {
+export const Filter = ({ filter, setFilter }) => {
+  const handleFilterChange = e => {
+    setFilter(e.target.value);
+  };
+
   return (
-    <li>
-      {contact.name} - {contact.tel}
-    </li>
+    <input
+      type="text"
+      placeholder="Search by name"
+      value={filter}
+      onChange={handleFilterChange}
+    />
   );
 };
